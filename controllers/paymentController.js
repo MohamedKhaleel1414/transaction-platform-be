@@ -1,10 +1,12 @@
 const { v4: uuidv4 } = require("uuid");
 const PaymentModel = require("../models/payment");
 const InfoModel = require("../models/info"); 
+const { ObjectId } = require('mongodb');
 
 const getPayments = async (req, res) => {
+  const idd = new ObjectId(req.params.id)
   try {
-    const payments = await PaymentModel.find({ don_id: req.params.id }, {});
+    const payments = await PaymentModel.find({ don_id: idd }, {});
     console.log(payments);
     if (payments) {
       res.status(200).send({
