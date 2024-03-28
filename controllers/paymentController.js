@@ -12,7 +12,7 @@ const getPayments = async (req, res) => {
       res.status(200).send({
         message: "success",
         status: 200,
-        data: payments,
+        data: payments.reverse(),
       });
     } else {
       res.status(404).send("Not found");
